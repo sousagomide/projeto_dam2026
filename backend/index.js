@@ -10,7 +10,7 @@ app.use(express.json())
 app.post('/jogos', async (req, res) => {
     const {titulo, plataforma, genero, nota, zerado} = req.body
     const resultado = await pool.query(
-        'INSERT INTO catalogojogos (titulo, plataforma, genero, nota, zerado) VALUES ($1, $2, $3, $4, $5)',
+        'INSERT INTO catalogojogos (titulo, plataforma, genero, nota, zerado) VALUES ($1, $2, $3, $4, $5) RETURNING *',
         [titulo, plataforma, genero, nota, zerado]
     )
     res.json(resultado.rows[0])
@@ -34,7 +34,7 @@ app.put('/jogos/:id', async (req, res) => {
     const {id} = req.params
     const {titulo, plataforma, genero, nota, zerado} = req.body
     const resultado = await pool.query(
-        'UPDATE catalogojogos SET titulo = $1, plataforma = $2, genero = $3, nota = $4, zerado = $5 WHERE id = $6',
+        'UPDATE catalogojogos SET titulo = $1, plataforma = $2, genero = $3, nota = $4, zerado = $5 WHERE id = $6 RETURNING *',
         [titulo, plataforma, genero, nota, zerado, id]
     )
     res.json(resultado.rows[0])

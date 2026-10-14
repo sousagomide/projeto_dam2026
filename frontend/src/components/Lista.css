@@ -1,0 +1,27 @@
+.lista-grade {
+    display: grid;
+    grid-template-columns: 300px 1fr 1fr 80px 100px 160px;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+}
+
+.lista-linha:nth-child(even) {
+    background-color: #d7d8d8;
+}
+
+.lista {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.lista-cabecalho {
+    background-color: #00439C;
+    color: white;
+    font-weight: bold;
+}
+
+.lista-linha:hover {
+    background-color: #72a1df;
+    color: white;
+}
